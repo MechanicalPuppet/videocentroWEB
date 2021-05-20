@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+        <title>VIDEOJUEGOS</title>
+        <meta charset="UTF-8">
+        <link href="estilos/estilosIndex.css" rel="stylesheet" type="text/css"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
+    <body>
+        
+        <header>
+            <h2> Videocentro "Silent Games" </h2> <h3><em> José Brandon Hernández y Arturo Mendoza</em> </h3>
+            
+        </header>
+         <nav>
+              <button type="button" name="back" onclick="history.back()"></button>
+            <ul>
+                
+                <li><a href="control?tarea=agregarVideojuego">¡Agregar videojuego!</a></li>
+                <li><a href="control?tarea=editarVideojuego">¡Editar videojuego!</a></li>
+                <li><a href="control?tarea=eliminarVideojuego">¡Eliminar videojuego!</a></li>
+                <li><a href="control?tarea=consultarVideojuegos">¡Consultar videojuegos!</a></li>
+                 <li><a href="control?tarea=consultarVideojuegosTitulo">¡Consultar videojuegos por titulo!</a></li>
+                 <li><a href="control?tarea=consultarVideojuegosGenero">¡Consultar videojuegos por genero!</a></li>
+            </ul>
+            
+        </nav>
+        
+        <article>
+            <h1> ¡AGREGAR VIDEOJUEGO!</h1>
+            <form action="agregaVideojuego">
+                <ul>
+                    <li><input type="number" name="numCatalogo" placeholder="Num. Catálogo" min="1" max ="999999999" style="width: 200px" required/></li>
+                    <li><input type="text" name="titulo" placeholder="Título" maxlength="35"  style="width: 200px" required/> </li>
+                    <li><input type="text" name="genero" placeholder="genero" maxlength="20" style="width: 200px" required pattern="[a-zA-Z ]{3,35}"/> </li>
+                    <li><input type="text" name="clasificacion" placeholder="clasificacion" maxlength="20" style="width: 200px" required /> </li>
+                    <li><input type="text" name="consola" placeholder="consola" maxlength="20" style="width: 200px" required/> </li>
+                    <li><input type="text" name="fabricante" placeholder="fabricante" maxlength="35" style="width: 200px" pattern="[a-zA-Z ]{3,35}"/> </li>
+                    <li><input type="number" name="version" placeholder="version" min="1" max ="999999999" style="width: 200px" required/> </li>
+                    <li><input type="submit" value ="Agregar videojuego" />
+                </ul>
+                </form>
+            
+        </article>
+        
+        <footer>
+            
+            <h5>Todos los derechos reservados.</h5>
+            <h6>Podría interesarte: <a href="https://ideasnuevas.net/wp-content/uploads/2016/08/Wallpapersxl-Perritos-Bonitos-Seguro-Que-Estabas-Esperando-Otro-Fondo-De-Perros-Pues-Ya-No-Tienes-276709-1440x1080.jpg">Contenido vital que todos deben ver.</a></h6>
+            
+            
+        </footer>
+    </body>
+</html>

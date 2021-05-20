@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+        <link href="estilos/estilosIndex.css" rel="stylesheet" type="text/css"/>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <title>Captura Videojuego por Titulo</title>
+    </head>
+    <body>
+        
+        <header>
+            <h1>¡Consultar videojuegos por título!</h1>
+            
+        </header>
+        
+        <nav>
+            <button type="button" name="back" onclick="history.back()"></button>
+            <ul>
+                
+                <li><a href="control?tarea=agregarVideojuego">¡Agregar videojuego!</a></li>
+                <li><a href="control?tarea=editarVideojuego">¡Editar videojuego!</a></li>
+                <li><a href="control?tarea=eliminarVideojuego">¡Eliminar videojuego!</a></li>
+                <li><a href="control?tarea=consultarVideojuegos">¡Consultar videojuegos!</a></li>
+                 <li><a href="control?tarea=consultarVideojuegosTitulo">¡Consultar videojuegos por titulo!</a></li>
+                 <li><a href="control?tarea=consultarVideojuegosGenero">¡Consultar videojuegos por genero!</a></li>
+            </ul>
+            
+        </nav>
+        
+        <article>
+            <h1> ¡Ingresa el título del videojuego a consultar!</h1>
+            <form action="consultarVideojuegoTitulo">
+                <ul>
+                    <li><input type="text" name="titulo" placeholder="Titulo" pattern="[a-zA-Z]{3,35}" required/></li>
+                    <li><input type="submit" value ="Capturar titulo" />
+                </ul>
+            </form>
+        </article>
+        
+        <footer>
+            <h1>¡Estoy muy feliz!</h1>
+        </footer>
+        
+        
+    </body>
+</html>
