@@ -66,7 +66,7 @@
         </script>
         
     <script>
-             function onSignOff{
+             function onSignOff(){
                gapi.auth2.getAuthInstance().disconnect();
                 location.reload();
                 window.location.href = "Login_JSP.jsp";

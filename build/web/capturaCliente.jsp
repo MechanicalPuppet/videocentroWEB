@@ -16,7 +16,6 @@
     <body>
         
         <header><h1>CLIENTES</h1></header>
-        
          <nav>
              <button type="button" name="back" onclick="history.back()"></button>
             <ul>
@@ -35,17 +34,23 @@
             <h4>Solamente se permiten letras</h4>
             <form action="agregaCliente">
                 <ul>
-                    <li><input type="number" name="numCredencial" placeholder="Núm. credencial"  min="1" max="9999999999" required/> </li>
-                    <li><input type="text" name="nombre" placeholder="Nombre" pattern="[a-zA-Z ]{3,35}" maxlength="35" required/> </li>
-                    <li><input type="text" name="direccion" placeholder="Dirección"  maxlength="35" required/> </li>
-                    <li><input type="text" name="numTarjeta" placeholder="Tarjeta de credito" maxlength="16" pattern="^[0-9]+" required/></li>
-                    <li><input type="text" name="telefono" placeholder="Teléfono" maxlength="15" pattern="^[0-9]+"/> </li>
+                    <li><input type="number" id="numCredencial" name="numCredencial" placeholder="Núm. credencial"  min="1" max="9999999999" required/> </li>
+                    <li><input type="text" id ="nombre" name="nombre" placeholder="Nombre" pattern="[a-zA-Z ]{3,35}" maxlength="35" required/> </li>
+                    <li><input type="text" id="direccion" name="direccion" placeholder="Dirección"  maxlength="35" required/> </li>
+                    <li><input type="text" id="numTarjeta" name="numTarjeta" placeholder="Tarjeta de credito" maxlength="16" pattern="^[0-9]+" required/></li>
+                    <li><input type="text" id="telefono" name="telefono" placeholder="Teléfono" maxlength="15" pattern="^[0-9]+"/> </li>
                     <li><input type="submit" value="Agregar cliente"/> </li>
                 </ul>
             </form>
+            
+           <form action="consultarClientes">
+        <input type="submit" value="Confirmar clientes agregados" />
+            </form>
 
         </article>
-        <footer>
+   
+   
+   <footer>
             <h5>Todos los derechos reservados.</h5>
             <h6>Podría interesarte: <a href="https://ideasnuevas.net/wp-content/uploads/2016/08/Wallpapersxl-Perritos-Bonitos-Seguro-Que-Estabas-Esperando-Otro-Fondo-De-Perros-Pues-Ya-No-Tienes-276709-1440x1080.jpg">Contenido vital que todos deben ver.</a></h6>
 

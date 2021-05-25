@@ -15,6 +15,10 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import com.rabbitmq.client.ConnectionFactory;
+import com.rabbitmq.client.Connection;
+import com.rabbitmq.client.Channel;
+import org.apache.commons.lang3.SerializationUtils;
 
 
 /**
@@ -23,7 +27,7 @@ import javax.servlet.http.HttpServletResponse;
  */
 @WebServlet(name = "agregaCliente", urlPatterns = {"/agregaCliente"})
 public class agregaCliente extends HttpServlet {
-
+ private final static String QUEUE_NAME = "hello";
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
      * methods.
@@ -45,16 +49,36 @@ public class agregaCliente extends HttpServlet {
             String telefono = request.getParameter("telefono")+"";
             String tarjeta = request.getParameter("numTarjeta");
             Clientes cliente = new Clientes(numCredencial, nombre, direccion, telefono, tarjeta);
-            try{
-                crud.registrarCliente(cliente);
-                response.sendRedirect("consultarClientes");
+     
+            ConnectionFactory factory = new ConnectionFactory();
+            factory.setHost("localhost"); //If we wanted to connect to a node on a different machine we'd simply specify its hostname or IP address here.
+            factory.setUsername("guest");
+
+            
+           try (Connection connection = factory.newConnection();
+                Channel channel = connection.createChannel()) {
+            channel.queueDeclare(QUEUE_NAME, false, false, false, null);
+            
+           //     Lapiz lapiz = new Lapiz("5", "Bic", "Yellow");
+            
+            byte[] data = SerializationUtils.serialize(cliente);
+            
+            channel.basicPublish("", QUEUE_NAME, null, data);
+            
+            
+            System.out.println(" [x] Sent '" + cliente.toString() + "'");
+//            channel.close();
+//            connection.close();
+
+            response.sendRedirect("capturaCliente.jsp");
+        }
             }catch(Exception e){
                 System.out.println("AQUÍ ESTÁ EL ERROR AYUDA");
                 System.out.println(e.getMessage());
                 response.sendRedirect("errorYaExiste.html");
             }
         }
-    }
+    
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**
