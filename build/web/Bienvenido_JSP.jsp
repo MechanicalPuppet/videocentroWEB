@@ -16,7 +16,7 @@
     <body>
         
         <header>
-            <h2> Videocentro "Silent Games" </h2> <h3><em> José Brandon Hernández y Arturo Mendoza</em> </h3>
+            <h2> Videocentro "Silent Games" </h2>
             
         </header>
         

@@ -37,17 +37,17 @@ public class editarVideojuego extends HttpServlet {
         try (PrintWriter out = response.getWriter()) {
             /* TODO output your page here. You may use following sample code. */
             
-            PersistenciaBD crud = new PersistenciaBD();
-            
-            Videojuegos videojuego = new Videojuegos(request.getParameter("numCatalogo"),
-                    request.getParameter("titulo"),
-                    request.getParameter("genero"),
-                    request.getParameter("clasificacion"),
-                    request.getParameter("consola"),
-                    request.getParameter("fabricante"),
-                    Integer.parseInt(request.getParameter("version")));
-            
-            crud.actualizarVideojuego(videojuego);
+//            PersistenciaBD crud = new PersistenciaBD();
+//            
+//            Videojuegos videojuego = new Videojuegos(request.getParameter("numCatalogo"),
+//                    request.getParameter("titulo"),
+//                    request.getParameter("genero"),
+//                    request.getParameter("clasificacion"),
+//                    request.getParameter("consola"),
+//                    request.getParameter("fabricante"),
+//                    Integer.parseInt(request.getParameter("version")));
+//            
+//            crud.actualizarVideojuego(videojuego);
             
             out.println("<!DOCTYPE html>"
                     + "<link href=\"estilos/estilosIndex.css\" rel=\"stylesheet\" type=\"text/css\"/>");
