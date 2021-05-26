@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<catalog xmlns="urn:oasis:names:tc:entity:xmlns:xml:catalog" prefer="system">
+    <system systemId="http://localhost:8080/ConsultService/consultVideogamesInventory?WSDL" uri="src/conf/xml-resources/web-service-references/consultVideogamesInventory/wsdl/localhost_8080/ConsultService/consultVideogamesInventory.wsdl"/>
+    <system systemId="http://localhost:8080/ConsultService/consultVideogamesInventory?xsd=1" uri="src/conf/xml-resources/web-service-references/consultVideogamesInventory/wsdl/localhost_8080/ConsultService/consultVideogamesInventory.xsd_1.xsd"/>
+    <system systemId="http://localhost:8080/ConsultService/consultVideogamesRental?WSDL" uri="src/conf/xml-resources/web-service-references/consultVideogamesRental/wsdl/localhost_8080/ConsultService/consultVideogamesRental.wsdl"/>
+    <system systemId="http://localhost:8080/ConsultService/consultVideogamesRental?xsd=1" uri="src/conf/xml-resources/web-service-references/consultVideogamesRental/wsdl/localhost_8080/ConsultService/consultVideogamesRental.xsd_1.xsd"/>
+    <system systemId="http://localhost:8080/ConsultService/consultClients?WSDL" uri="src/conf/xml-resources/web-service-references/consultClients/wsdl/localhost_8080/ConsultService/consultClients.wsdl"/>
+    <system systemId="http://localhost:8080/ConsultService/consultClients?xsd=1" uri="src/conf/xml-resources/web-service-references/consultClients/wsdl/localhost_8080/ConsultService/consultClients.xsd_1.xsd"/>
+    <system systemId="http://localhost:8080/ConsultService/consultVideogames?WSDL" uri="src/conf/xml-resources/web-service-references/consultVideogames/wsdl/localhost_8080/ConsultService/consultVideogames.wsdl"/>
+    <system systemId="http://localhost:8080/ConsultService/consultVideogames?xsd=1" uri="src/conf/xml-resources/web-service-references/consultVideogames/wsdl/localhost_8080/ConsultService/consultVideogames.xsd_1.xsd"/>
+</catalog>

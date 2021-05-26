@@ -8,6 +8,7 @@ package Servlets;
 
 import Entidades.Clientes;
 import Fachadas.PersistenciaBD;
+import clients.ConsultClients_Service;
 import com.rabbitmq.client.AMQP;
 import com.rabbitmq.client.Channel;
 import com.rabbitmq.client.Connection;
@@ -24,6 +25,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.xml.ws.WebServiceRef;
 import org.apache.commons.lang3.SerializationUtils;
 
 
@@ -33,6 +35,11 @@ import org.apache.commons.lang3.SerializationUtils;
  */
 @WebServlet(name = "consultarClientes", urlPatterns = {"/consultarClientes"})
 public class consultarClientes extends HttpServlet {
+
+    @WebServiceRef(wsdlLocation = "WEB-INF/wsdl/localhost_8080/ConsultService/consultClients.wsdl")
+    private ConsultClients_Service service;
+
+
     private final static String QUEUE_NAME = "hello";
 
     /**
@@ -77,10 +84,10 @@ public class consultarClientes extends HttpServlet {
             System.out.println(x.getMessage());
         }
             
-            List lista = crud.consultarClientes();
+            List lista = getAllClients();
 
             if (!lista.isEmpty()) {
-                Clientes c;
+                clients.Clientes c;
 
                 out.println("<!DOCTYPE html>"
                         + "<link href=\"estilos/estilosIndex.css\" rel=\"stylesheet\" type=\"text/css\"/>");
@@ -102,7 +109,7 @@ public class consultarClientes extends HttpServlet {
                         + "<th> Telefono </th> </tr>");
                 for (int i = 0; i < lista.size(); i++) {
 
-                    c = (Clientes) lista.get(i);
+                    c = (clients.Clientes) lista.get(i);
 
                     out.println("<tr>"
                             + "<td>" + c.getNumCredencial() + "</td>"
@@ -189,5 +196,15 @@ public class consultarClientes extends HttpServlet {
     public String getServletInfo() {
         return "Short description";
     }// </editor-fold>
+
+    private java.util.List<clients.Clientes> getAllClients() {
+        // Note that the injected javax.xml.ws.Service reference as well as port objects are not thread safe.
+        // If the calling of port operations may lead to race condition some synchronization is required.
+        clients.ConsultClients port = service.getConsultClientsPort();
+        return port.getAllClients();
+    }
+
+ 
+    
 
 }

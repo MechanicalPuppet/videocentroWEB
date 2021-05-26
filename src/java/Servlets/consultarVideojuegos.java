@@ -15,6 +15,8 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.xml.ws.WebServiceRef;
+import videogames.ConsultVideogames_Service;
 
 /**
  *
@@ -22,6 +24,9 @@ import javax.servlet.http.HttpServletResponse;
  */
 @WebServlet(name = "consultarVideojuegos", urlPatterns = {"/consultarVideojuegos"})
 public class consultarVideojuegos extends HttpServlet {
+
+    @WebServiceRef(wsdlLocation = "WEB-INF/wsdl/localhost_8080/ConsultService/consultVideogames.wsdl")
+    private ConsultVideogames_Service service;
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -39,11 +44,11 @@ public class consultarVideojuegos extends HttpServlet {
 
             PersistenciaBD crud = new PersistenciaBD();
 
-            List lista = crud.consultarVideojuegos();
+            List lista = getAllVideogames();
 
             if (!lista.isEmpty()) {
 
-                Videojuegos v;
+                videogames.Videojuegos v;
 
                 out.println("<!DOCTYPE html>");
                 out.println("<link href=\"estilos/estilosIndex.css\" rel=\"stylesheet\" type=\"text/css\"/>");
@@ -76,7 +81,7 @@ public class consultarVideojuegos extends HttpServlet {
                         + "</tr>");
                 for (int i = 0; i < lista.size(); i++) {
 
-                    v = (Videojuegos) lista.get(i);
+                    v = (videogames.Videojuegos) lista.get(i);
 
                     out.println("<tr>"
                             + "<td>" + v.getNumCatalogo() + "</td>"
@@ -166,5 +171,13 @@ public class consultarVideojuegos extends HttpServlet {
     public String getServletInfo() {
         return "Short description";
     }// </editor-fold>
+
+    private java.util.List<videogames.Videojuegos> getAllVideogames() {
+        // Note that the injected javax.xml.ws.Service reference as well as port objects are not thread safe.
+        // If the calling of port operations may lead to race condition some synchronization is required.
+        videogames.ConsultVideogames port = service.getConsultVideogamesPort();
+        return port.getAllVideogames();
+    }
+   
 
 }

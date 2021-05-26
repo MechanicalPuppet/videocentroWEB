@@ -6,7 +6,6 @@
 package Servlets;
 
 import Entidades.Inventariovideojuegos;
-import Fachadas.PersistenciaBD;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.List;
@@ -15,6 +14,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.xml.ws.WebServiceRef;
 
 /**
  *
@@ -36,9 +36,9 @@ public class obtenVideojuegoConsultarInventario extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
-            PersistenciaBD crud = new PersistenciaBD();
+           // PersistenciaBD crud = new PersistenciaBD();
 
-            List<Inventariovideojuegos> lista = crud.consultarInventario();
+            List<Inventariovideojuegos> lista = null;
             String numCatalogo = request.getParameter("numCatalogo");
             Inventariovideojuegos juego = null;
             
@@ -149,5 +149,9 @@ public class obtenVideojuegoConsultarInventario extends HttpServlet {
     public String getServletInfo() {
         return "Short description";
     }// </editor-fold>
+
+    
+
+    
 
 }

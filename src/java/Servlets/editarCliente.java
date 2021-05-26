@@ -42,8 +42,6 @@ public class editarCliente extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
 
-            PersistenciaBD crud = new PersistenciaBD();
-
             String numCredencial = request.getParameter("numCredencial");
             String nombre = request.getParameter("nombre");
             String telefono = request.getParameter("telefono");
