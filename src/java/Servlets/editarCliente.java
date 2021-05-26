@@ -6,9 +6,12 @@
 package Servlets;
 
 import Entidades.Clientes;
+import Entidades.Rentasvideojuegos;
 import Fachadas.PersistenciaBD;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.ArrayList;
+import javax.ejb.EJB;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -21,6 +24,9 @@ import javax.servlet.http.HttpServletResponse;
  */
 @WebServlet(name = "editarCliente", urlPatterns = {"/editarCliente"})
 public class editarCliente extends HttpServlet {
+
+    @EJB
+    private ejb.CRUDFacadeRemote cRUDFacade;
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -43,8 +49,12 @@ public class editarCliente extends HttpServlet {
             String telefono = request.getParameter("telefono");
             String direccion = request.getParameter("direccion");
             String numTarjeta = request.getParameter("numTarjeta");
+            
+            Clientes cliente = new Clientes(numTarjeta, numCredencial, nombre, direccion, telefono);
+            cliente.setRentasvideojuegosList(new ArrayList<Rentasvideojuegos>());
 
-            crud.actualizarCliente(new Clientes(numCredencial, nombre, direccion, telefono, numTarjeta));
+            cRUDFacade.actualizarCliente(cliente);
+            
 
             out.println("<!DOCTYPE html>");
             out.println("<html>");

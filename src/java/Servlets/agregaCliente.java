@@ -59,7 +59,6 @@ public class agregaCliente extends HttpServlet {
                 Channel channel = connection.createChannel()) {
             channel.queueDeclare(QUEUE_NAME, false, false, false, null);
             
-           //     Lapiz lapiz = new Lapiz("5", "Bic", "Yellow");
             
             byte[] data = SerializationUtils.serialize(cliente);
             
@@ -67,8 +66,6 @@ public class agregaCliente extends HttpServlet {
             
             
             System.out.println(" [x] Sent '" + cliente.toString() + "'");
-//            channel.close();
-//            connection.close();
 
             response.sendRedirect("capturaCliente.jsp");
         }
